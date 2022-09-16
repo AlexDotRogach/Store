@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 export default class Card {
   constructor({
     shortName = '',
@@ -16,5 +18,13 @@ export default class Card {
     this.url = url;
     this.alt = alt;
     this.quantity = quantity;
+  }
+
+  removeQuantity(quantity) {
+    if (quantity > this.quantity) {
+      Notiflix.Notify.failure(`${quantity} больше чем кол-во имеющего товара`);
+      return '';
+    }
+    this.quantity -= quantity;
   }
 }

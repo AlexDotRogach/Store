@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://alexdotrogach.github.io/store",
   "scripts": {
-    "start": "parcel src/*.html",
+    "start": "parcel src/*.html -p 5050",
     "build": "parcel build src/*.html --public-url /store/"
   },
   "repository": {
@@ -18,7 +18,8 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

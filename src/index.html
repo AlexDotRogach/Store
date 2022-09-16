@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Store</title>
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
   </head>
   <body>
     <header></header>
@@ -14,5 +13,18 @@
         <div class="goods"></div>
       </div>
     </section>
+
+    <template id="modal-buy">
+      <div class="modal-buy__wrapper">
+        <div class="buy">
+          <div class="buy__wrapper">
+            <div class="buy__quantity">Введите кол-во товара:</div>
+            <input class="buy__input" type="text" />
+            <button class="buy__btn">Купить</button>
+          </div>
+        </div>
+      </div>
+    </template>
   </body>
+  <script type="module" src="./index.js"></script>
 </html>

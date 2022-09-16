@@ -1,0 +1,55 @@
+// body {
+//   position: relative;
+// }
+
+.modal-buy__wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+}
+
+.buy {
+  width: 300px;
+  height: 300px;
+
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+
+  border-radius: 20px;
+
+  @include posCenter;
+
+  &__wrapper {
+    position: absolute;
+    @include posCenter;
+
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr;
+    grid-row-gap: 10px;
+    place-content: center center;
+  }
+  &__quantity {
+    color: white;
+    text-align: center;
+  }
+  &__input {
+    outline: none;
+    border: none;
+    border-radius: 15px;
+
+    position: relative;
+    @include posLeft;
+    width: 30%;
+  }
+  &__btn {
+    border: none;
+    border-radius: 10px;
+
+    outline: none;
+    cursor: pointer;
+
+    padding: 10px;
+  }
+}
