@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const createGoods = require('./js/createGoods').default;
+  const createGoods = require('./js/create/createGoods').default;
 
   createGoods();
 });
