@@ -1,6 +1,10 @@
 import Notiflix from 'notiflix';
 // this class creates our card of product
 export default class Card {
+  #reg = {
+    num: new RegExp(/\d+/),
+  };
+
   constructor({
     shortName = '',
     fullName = '',
@@ -29,6 +33,18 @@ export default class Card {
   }
 
   addTresh(parent, quantity) {
+    // if goods are already here
+    if ([...parent.children].length > 0) {
+      for (const tresh of [...parent.children]) {
+        if (this.shortName === tresh.children[0].textContent) {
+          const newQuantity =
+            +this.#reg.num.exec(tresh.children[1].textContent)[0] + +quantity;
+          tresh.children[1].innerHTML = `<b>quantity: </b> ${newQuantity}`;
+          return '';
+        }
+      }
+    }
+
     parent.insertAdjacentHTML(
       'afterbegin',
       `<div class="tresh__item">
@@ -45,6 +61,11 @@ export default class Card {
   validateQuantity(quantity) {
     if (quantity > this.quantity) {
       Notiflix.Notify.failure(`${quantity} больше чем кол-во имеющего товара`);
+      return true;
+    }
+
+    if (isNaN(+quantity)) {
+      Notiflix.Notify.failure(`${quantity} не число`);
       return true;
     }
   }
