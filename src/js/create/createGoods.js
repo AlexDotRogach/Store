@@ -1,5 +1,5 @@
 import products from '../data/products';
-import Card from '../class/Card';
+import Card from '../class/card';
 import render from '../renderCard';
 import btnBuy from '../click/btnBuy';
 
