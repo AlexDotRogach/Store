@@ -7,18 +7,19 @@ function createGoods() {
   const refs = {
     wrapGoods: document.querySelector('.goods'),
     body: document.querySelector('body'),
-    tresh: document.querySelector('.tresh__container'),
-    btnTresh: document.querySelector('.tresh'),
-    treshCount: document.querySelector('.tresh__counter'),
+    basket: document.querySelector('.basket__container'),
+    btnbasket: document.querySelector('.basket'),
+    basketCount: document.querySelector('.basket__counter'),
+    basketSum: document.querySelector('.basket__sum'),
   };
   const productsArr = [];
-  // create instances of products
+
   products.forEach(item => productsArr.push(new Card(item)));
 
   render(refs, productsArr);
 
   refs.wrapGoods.addEventListener('click', clickGoods);
-  refs.btnTresh.addEventListener('click', e => clickTresh(e, refs.tresh));
+  refs.btnbasket.addEventListener('click', e => clickBasket(e, refs.basket));
 
   function clickGoods(e) {
     if (e.target.tagName === 'BUTTON') {
@@ -26,25 +27,25 @@ function createGoods() {
     }
   }
 
-  function clickTresh(e, container) {
+  function clickBasket(e, container) {
     const tar = e.target;
 
-    if (tar.classList.contains('tresh')) container.classList.toggle('show');
+    if (tar.classList.contains('basket')) container.classList.toggle('show');
 
-    if (tar.classList.contains('tresh__item-remove')) {
+    if (tar.classList.contains('basket__item-remove')) {
       const onlyNum = new RegExp(/\d+/);
 
-      const itemsTresh = [...tar.parentNode.children]
+      const itemsbasket = [...tar.parentNode.children]
         .filter(
           item =>
-            item.classList.contains('tresh__item-name') ||
-            item.classList.contains('tresh__item-quantity')
+            item.classList.contains('basket__item-name') ||
+            item.classList.contains('basket__item-quantity')
         )
         .map(item => item.textContent);
 
       productsArr.forEach(item => {
-        if (item.shortName === itemsTresh[0])
-          item.quantity += +onlyNum.exec(itemsTresh[1]);
+        if (item.shortName === itemsbasket[0])
+          item.quantity += +onlyNum.exec(itemsbasket[1]);
       });
 
       tar.parentElement.remove();

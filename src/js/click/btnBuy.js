@@ -14,6 +14,14 @@ function btnBuy(e, refs, productsArr) {
         refs.body.append(template.content.cloneNode(true));
         const wrapModal = document.querySelector('.modal-buy__wrapper');
 
+        // if click won`t be in a modal we close a modal
+        wrapModal.addEventListener('click', e => {
+          if (e.target.classList.contains('modal-buy__wrapper')) {
+            refs.body.removeChild(wrapModal);
+            return '';
+          }
+        });
+
         wrapModal.querySelector('.buy__btn').addEventListener('click', () => {
           const valueQuantity = wrapModal.querySelector('.buy__input').value;
 
